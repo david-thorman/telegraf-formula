@@ -1,7 +1,9 @@
+{% from "telegraf/map.jinja" import telegraf with context %}
+
 telegraf-service:
-  service.running:
+  service.{{ "running" if telegraf.enabled else "dead" }}:
     - name: telegraf
-    - enable: True
+    - enable: {{ telegraf.enabled }}
     - watch:
       - sls: telegraf.install
       - sls: telegraf.config

@@ -2,6 +2,7 @@ telegraf:
   version: 0.13.2
   indent: 2
   use_system_inputs: True
+  enabled: True
   agent:
     hostname: ""
     interval: 10s

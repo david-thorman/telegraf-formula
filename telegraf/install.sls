@@ -4,7 +4,7 @@ telegraf-pkg:
   file.managed:
     - name: /tmp/telegraf_{{ telegraf.version }}{{ telegraf.pkgsuffix }}
     - source: {{ telegraf.source_url }}{{ telegraf.version }}{{ telegraf.pkgsuffix }}
-    - source_hash: md5={{ telegraf.source_hash }}
+    - source_hash: sha256={{ telegraf.source_hash }}
     - unless: test -f /tmp/telegraf_{{ telegraf.version }}{{ telegraf.pkgsuffix }}
 
 telegraf-install:
