@@ -54,11 +54,11 @@
     {%- elif value is string %} {#strings#}
       {{- output_indented(col, (key + ' = "' + value|string + '"')) }}
     {%- elif value is iterable %} {#arrays#}
-      {%- if key == "tags" %}
-        {{- output_indented(col, ("[" + plugin_type + "." + plugin.plugin_name + ".tags]")) }}
+      {%- if key in ["tags", "options"] %}
+        {{- output_indented(col, ("[" + plugin_type + "." + plugin.plugin_name + "." + key + "]")) }}
         {%- set col = col + telegraf.indent %}
           {%- for k, v in value.items() %}
-            {{- output_indented(col, (k + ' = "' + v|string + '"')) }}
+            {{- output_indented(col, ('"' + k + '" = "' + v|string + '"')) }}
           {%- endfor -%}
         {%- set col = col - telegraf.indent %}
       {%- else %}
