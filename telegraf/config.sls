@@ -8,7 +8,7 @@ telegraf-config:
     - group: root
     - mode: 644
     - context:
-        telegraf: {{ telegraf }}
+        telegraf: {{ telegraf|json }}
     - template: jinja
     - require:
       - sls: telegraf.install
